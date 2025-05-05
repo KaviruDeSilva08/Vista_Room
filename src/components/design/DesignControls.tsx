@@ -88,11 +88,11 @@ const DesignControls: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-center justify-between bg-white border-b px-4 py-2">
+    <div className="flex flex-col sm:flex-row items-center justify-between bg-white border-b border-light px-4 py-2">
       <div className="flex items-center space-x-2">
         <button
           onClick={toggleViewMode}
-          className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="inline-flex items-center px-3 py-1.5 border border-light/50 text-sm font-medium rounded-xl text-primary bg-primary/5 hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary/20 transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
         >
           <Eye className="mr-1.5 h-4 w-4" />
           {viewMode.mode === '2d' ? 'Switch to 3D' : 'Switch to 2D'}
@@ -100,7 +100,7 @@ const DesignControls: React.FC = () => {
         
         <button
           onClick={saveDesign}
-          className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-green-700 bg-green-100 hover:bg-green-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+          className="inline-flex items-center px-3 py-1.5 border border-light/50 text-sm font-medium rounded-xl text-secondary bg-secondary/5 hover:bg-secondary/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-secondary/20 transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
         >
           <Save className="mr-1.5 h-4 w-4" />
           Save Design
@@ -109,21 +109,21 @@ const DesignControls: React.FC = () => {
         <div className="relative">
           <button
             onClick={() => setShowDownloadOptions(!showDownloadOptions)}
-            className="inline-flex items-center px-3 py-1.5 border border-transparent text-sm font-medium rounded-md text-purple-700 bg-purple-100 hover:bg-purple-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+            className="inline-flex items-center px-3 py-1.5 border border-light/50 text-sm font-medium rounded-xl text-accent bg-accent/5 hover:bg-accent/10 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent/20 transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
           >
             <Download className="mr-1.5 h-4 w-4" />
             Download {viewMode.mode.toUpperCase()} View
           </button>
           
           {showDownloadOptions && (
-            <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
+            <div className="absolute right-0 mt-2 w-48 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 z-50">
               <div className="py-1" role="menu" aria-orientation="vertical">
                 <button
                   onClick={() => {
                     handleDownloadImage('png');
                     setShowDownloadOptions(false);
                   }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block w-full text-left px-4 py-2 text-sm text-text hover:bg-light/30 rounded-xl transition-colors duration-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]"
                   role="menuitem"
                 >
                   Download as PNG
@@ -133,7 +133,7 @@ const DesignControls: React.FC = () => {
                     handleDownloadImage('jpg');
                     setShowDownloadOptions(false);
                   }}
-                  className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                  className="block w-full text-left px-4 py-2 text-sm text-text hover:bg-light/30 rounded-xl transition-colors duration-200 shadow-[inset_0_1px_2px_rgba(0,0,0,0.05)]"
                   role="menuitem"
                 >
                   Download as JPG
@@ -147,52 +147,52 @@ const DesignControls: React.FC = () => {
       {selectedItem && (
         <div className="flex items-center space-x-4 mt-2 sm:mt-0">
           <div className="flex items-center space-x-2">
-            <label className="text-sm text-gray-600">Color:</label>
+            <label className="text-sm text-text">Color:</label>
             <input
               type="color"
               value={selectedItem.color}
               onChange={handleColorChange}
-              className="h-8 w-8 rounded cursor-pointer"
+              className="h-8 w-8 rounded-lg cursor-pointer border border-light/50 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)]"
             />
           </div>
           
           <div className="flex items-center space-x-2">
             <button
               onClick={handleScaleDecrease}
-              className="p-1 rounded-md hover:bg-gray-100"
+              className="p-1.5 rounded-xl hover:bg-light/30 text-text transition-colors duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
             >
-              <Minimize className="h-4 w-4 text-gray-600" />
+              <Minimize className="h-4 w-4" />
             </button>
-            <span className="text-sm text-gray-600">Scale</span>
+            <span className="text-sm text-text">Scale</span>
             <button
               onClick={handleScaleIncrease}
-              className="p-1 rounded-md hover:bg-gray-100"
+              className="p-1.5 rounded-xl hover:bg-light/30 text-text transition-colors duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
             >
-              <Maximize className="h-4 w-4 text-gray-600" />
+              <Maximize className="h-4 w-4" />
             </button>
           </div>
 
           <div className="flex items-center space-x-2">
             <button
               onClick={handleRotateLeft}
-              className="p-1 rounded-md hover:bg-gray-100"
+              className="p-1.5 rounded-xl hover:bg-light/30 text-text transition-colors duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
               title="Rotate Left"
             >
-              <RotateCcw className="h-4 w-4 text-gray-600" />
+              <RotateCcw className="h-4 w-4" />
             </button>
-            <span className="text-sm text-gray-600">Rotate</span>
+            <span className="text-sm text-text">Rotate</span>
             <button
               onClick={handleRotateRight}
-              className="p-1 rounded-md hover:bg-gray-100"
+              className="p-1.5 rounded-xl hover:bg-light/30 text-text transition-colors duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
               title="Rotate Right"
             >
-              <RotateCw className="h-4 w-4 text-gray-600" />
+              <RotateCw className="h-4 w-4" />
             </button>
           </div>
           
           <button
             onClick={handleDeleteItem}
-            className="inline-flex items-center px-2 py-1 border border-transparent text-sm font-medium rounded-md text-red-700 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500"
+            className="inline-flex items-center px-3 py-1.5 border border-light/50 text-sm font-medium rounded-xl text-red-600 bg-red-50 hover:bg-red-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-200 transition-all duration-200 shadow-[inset_0_2px_4px_rgba(0,0,0,0.05)] active:shadow-[inset_0_1px_2px_rgba(0,0,0,0.1)]"
           >
             <Trash2 className="h-4 w-4 mr-1" />
             Delete
